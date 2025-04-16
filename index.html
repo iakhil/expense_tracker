@@ -16,6 +16,7 @@
         </header>
 
         <main class="container">
+            <!-- Month selection -->
             <div class="card controls">
                 <h2>Month Selection</h2>
                 <div class="input-group">
@@ -26,7 +27,37 @@
                 </div>
             </div>
 
-            <div class="flex-row">
+            <!-- Summary section -->
+            <div class="card summary">
+                <h2>Summary for <span id="current-month-summary"></span></h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Income</span>
+                        <span class="summary-value">$<span id="summary-paycheck">0.00</span></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Expenses</span>
+                        <span class="summary-value">$<span id="summary-expenses">0.00</span></span>
+                    </div>
+                    <div class="summary-item savings">
+                        <span class="summary-label">Savings</span>
+                        <span class="summary-value">$<span id="summary-savings">0.00</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Category section -->
+            <div class="card add-category">
+                <h2>Add New Category</h2>
+                <div class="input-group">
+                    <label for="new-category-name">Category Name:</label>
+                    <input type="text" id="new-category-name" placeholder="New Category">
+                </div>
+                <button class="btn-primary" id="add-category-btn">Add Category</button>
+            </div>
+
+            <!-- Income and Expense Form section -->
+            <div class="income-expense-container">
                 <div class="card add-income">
                     <h2>Add Paycheck</h2>
                     <div class="input-group">
@@ -60,45 +91,25 @@
                 </div>
             </div>
 
-            <div class="card add-category">
-                <h2>Add New Category</h2>
-                <div class="input-group">
-                    <label for="new-category-name">Category Name:</label>
-                    <input type="text" id="new-category-name" placeholder="New Category">
-                </div>
-                <button class="btn-primary" id="add-category-btn">Add Category</button>
-            </div>
-
-            <div class="card summary">
-                <h2>Summary for <span id="current-month-summary"></span></h2>
-                <div class="summary-grid">
-                    <div class="summary-item">
-                        <span class="summary-label">Income</span>
-                        <span class="summary-value">$<span id="summary-paycheck">0.00</span></span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Expenses</span>
-                        <span class="summary-value">$<span id="summary-expenses">0.00</span></span>
-                    </div>
-                    <div class="summary-item savings">
-                        <span class="summary-label">Savings</span>
-                        <span class="summary-value">$<span id="summary-savings">0.00</span></span>
+            <!-- Transaction Lists section -->
+            <div class="transactions-container">
+                <div class="card paychecks-list">
+                    <h2>Paychecks</h2>
+                    <div class="list-container">
+                        <ul id="paychecks-ul">
+                            <!-- Paychecks will be listed here -->
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <div class="card paychecks-list">
-                <h2>Paychecks</h2>
-                <ul id="paychecks-ul">
-                    <!-- Paychecks will be listed here -->
-                </ul>
-            </div>
-
-            <div class="card expenses-list">
-                <h2>Expenses</h2>
-                <ul id="expenses-ul">
-                    <!-- Expenses will be listed here -->
-                </ul>
+                <div class="card expenses-list">
+                    <h2>Expenses</h2>
+                    <div class="list-container">
+                        <ul id="expenses-ul">
+                            <!-- Expenses will be listed here -->
+                        </ul>
+                    </div>
+                </div>
             </div>
         </main>
     </div>

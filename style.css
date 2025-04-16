@@ -34,6 +34,7 @@ body {
     background-color: var(--bg-color);
     line-height: 1.6;
     font-weight: 400;
+    overflow-x: hidden;
 }
 
 .app-container {
@@ -68,19 +69,28 @@ h2 {
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 95%;
     margin: 2rem auto;
     padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 300px 1fr 350px;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: 
+        "controls summary add-category"
+        "income-expense income-expense income-expense"
+        "transactions transactions transactions";
+    gap: 1.5rem;
+    align-items: start;
 }
 
 .card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    padding: 1.8rem;
-    margin-bottom: 1.8rem;
+    padding: 1.5rem;
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.02);
+    height: 100%;
 }
 
 .card:hover {
@@ -88,15 +98,46 @@ h2 {
     transform: translateY(-3px);
 }
 
+.controls {
+    grid-area: controls;
+}
+
+.summary {
+    grid-area: summary;
+}
+
+.add-category {
+    grid-area: add-category;
+}
+
+.income-expense-container {
+    grid-area: income-expense;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.income-expense-container > div {
+    flex: 1;
+}
+
+.transactions-container {
+    grid-area: transactions;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.paychecks-list, 
+.expenses-list {
+    flex: 1;
+}
+
 .flex-row {
     display: flex;
-    gap: 1.8rem;
-    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .flex-row > div {
     flex: 1;
-    min-width: 300px;
 }
 
 .input-group {
@@ -171,15 +212,15 @@ button {
 /* Summary styles */
 .summary-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
 }
 
 .summary-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1.2rem 0.8rem;
     background-color: #f8fafc;
     border-radius: var(--border-radius);
     text-align: center;
@@ -193,14 +234,14 @@ button {
 }
 
 .summary-label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-light);
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
 .summary-value {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 600;
     color: var(--text-color);
 }
@@ -229,6 +270,28 @@ button {
     color: var(--accent-color);
 }
 
+/* Scrollable lists */
+.list-container {
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-color);
+}
+
+.list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.list-container::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 10px;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
 /* Expenses and Paychecks lists */
 #expenses-ul,
 #paychecks-ul {
@@ -240,8 +303,8 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem;
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
     background-color: var(--card-hover);
     border-radius: var(--border-radius);
     transition: var(--transition);
@@ -309,14 +372,36 @@ button {
 .empty-list-message {
     text-align: center;
     color: var(--text-light);
-    padding: 2rem;
+    padding: 1.5rem;
     font-style: italic;
     font-size: 0.95rem;
 }
 
 /* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "controls summary"
+            "add-category add-category"
+            "income-expense income-expense"
+            "transactions transactions";
+    }
+}
+
 @media (max-width: 768px) {
-    .flex-row {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "controls"
+            "summary"
+            "add-category"
+            "income-expense"
+            "transactions";
+    }
+    
+    .income-expense-container,
+    .transactions-container {
         flex-direction: column;
     }
     
