@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VJ's Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Expense Tracker</h1>
+        </header>
+
+        <main class="container">
+            <div class="card controls">
+                <h2>Month Selection</h2>
+                <div class="input-group">
+                    <label for="month-select">Select Month:</label>
+                    <select id="month-select">
+                        <!-- Months will be populated by JavaScript -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="card add-income">
+                    <h2>Add Paycheck</h2>
+                    <div class="input-group">
+                        <label for="paycheck-date">Date Received:</label>
+                        <input type="date" id="paycheck-date">
+                    </div>
+                    <div class="input-group">
+                        <label for="paycheck-amount">Amount:</label>
+                        <input type="number" id="paycheck-amount" placeholder="Enter amount">
+                    </div>
+                    <button class="btn-primary" id="add-paycheck-btn">Add Paycheck</button>
+                </div>
+
+                <div class="card add-expense">
+                    <h2>Add Expense</h2>
+                    <div class="input-group">
+                        <label for="expense-amount">Amount:</label>
+                        <input type="number" id="expense-amount" placeholder="Amount">
+                    </div>
+                    <div class="input-group">
+                        <label for="expense-category">Category:</label>
+                        <select id="expense-category">
+                            <option value="">Select Category</option>
+                            <!-- Default categories -->
+                            <option value="Rent">Rent</option>
+                            <option value="Groceries">Groceries</option>
+                            <option value="Utilities">Utilities</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" id="add-expense-btn">Add Expense</button>
+                </div>
+            </div>
+
+            <div class="card add-category">
+                <h2>Add New Category</h2>
+                <div class="input-group">
+                    <label for="new-category-name">Category Name:</label>
+                    <input type="text" id="new-category-name" placeholder="New Category">
+                </div>
+                <button class="btn-primary" id="add-category-btn">Add Category</button>
+            </div>
+
+            <div class="card summary">
+                <h2>Summary for <span id="current-month-summary"></span></h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Income</span>
+                        <span class="summary-value">$<span id="summary-paycheck">0.00</span></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Expenses</span>
+                        <span class="summary-value">$<span id="summary-expenses">0.00</span></span>
+                    </div>
+                    <div class="summary-item savings">
+                        <span class="summary-label">Savings</span>
+                        <span class="summary-value">$<span id="summary-savings">0.00</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card paychecks-list">
+                <h2>Paychecks</h2>
+                <ul id="paychecks-ul">
+                    <!-- Paychecks will be listed here -->
+                </ul>
+            </div>
+
+            <div class="card expenses-list">
+                <h2>Expenses</h2>
+                <ul id="expenses-ul">
+                    <!-- Expenses will be listed here -->
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

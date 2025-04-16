@@ -1,0 +1,256 @@
+:root {
+    --primary-color: #4a6fa5;
+    --primary-color-dark: #3a5a80;
+    --secondary-color: #6b8cae;
+    --accent-color: #47b475;
+    --accent-hover: #3a9861;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --income-color: #2980b9;
+    --text-color: #333;
+    --text-light: #666;
+    --bg-color: #f5f7fa;
+    --card-bg: #ffffff;
+    --border-radius: 8px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-weight: 600;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.flex-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.flex-row > div {
+    flex: 1;
+    min-width: 300px;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+button {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary,
+#set-paycheck-btn,
+#add-expense-btn,
+#add-category-btn,
+#add-paycheck-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.btn-primary:hover,
+#set-paycheck-btn:hover,
+#add-expense-btn:hover,
+#add-category-btn:hover,
+#add-paycheck-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Summary styles */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.summary-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.summary-item.savings {
+    background-color: #e8f4ea;
+}
+
+.summary-item.savings .summary-value {
+    color: var(--accent-color);
+}
+
+/* Expenses and Paychecks lists */
+#expenses-ul,
+#paychecks-ul {
+    list-style: none;
+}
+
+#expenses-ul li,
+#paychecks-ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+}
+
+#expenses-ul li {
+    border-left: 3px solid var(--secondary-color);
+}
+
+#paychecks-ul li {
+    border-left: 3px solid var(--income-color);
+}
+
+#expenses-ul li button,
+#paychecks-ul li button {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+#expenses-ul li button:hover,
+#paychecks-ul li button:hover {
+    background-color: var(--danger-hover);
+}
+
+#expenses-ul .expense-category {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+#expenses-ul .expense-amount,
+#paychecks-ul .paycheck-amount {
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+#paychecks-ul .paycheck-date {
+    font-weight: 500;
+    color: var(--income-color);
+}
+
+.add-income h2 {
+    color: var(--income-color);
+}
+
+/* Empty state message */
+.empty-list-message {
+    text-align: center;
+    color: var(--text-light);
+    padding: 1rem;
+    font-style: italic;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .flex-row {
+        flex-direction: column;
+    }
+    
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+} 
